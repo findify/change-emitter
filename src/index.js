@@ -39,8 +39,18 @@ export const createChangeEmitter = () => {
     }
   }
 
+  function getListeners() {
+    return currentListeners
+  }
+
+  function addListeners(newListeners) {
+    currentListeners = [...currentListeners, ...newListeners]
+  }
+
   return {
     listen,
-    emit
+    emit,
+    getListeners,
+    addListeners
   }
 }
